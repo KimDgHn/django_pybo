@@ -2,8 +2,10 @@ from django.core.paginator import Paginator
 from django.db.models import Q, Count
 from django.shortcuts import render, get_object_or_404
 # 이벤트에 필요한 메소드 호출
+from common.views import get_client_ip
+from ..models import Question, QuestionCount, Answer
 
-from ..models import Question
+
 # 질문에 임포트
 
 
