@@ -80,7 +80,7 @@
                 <span class="text-danger small ml-2">{{ question.answer_set.count }}</span>
                 {% endif %}
             </td>
-            <td>{{ question.review.all.count }}</td>
+            <td>{{ question.voter.all.count }}</td>
             <td>{{ question.author.username }}</td>  <!-- 글쓴이 추가 -->
             <td>{{ question.create_date }}</td>
         </tr>
