@@ -73,9 +73,19 @@
              </div>
         </div>
     </div>
-            <h5 class="border-bottom my-3 py-2">{{ question.answer_set.count }}개의 답변이 있습니다.</h5>
-    {% for answer in question.answer_set.all %}
-    <a name="answer_{{ answer.id }}"></a>
+    <a name="answer_start"></a>
+    <div class="row justify-content-between border-bottom my-3">
+        <div class="col-4 py-2">
+            <h5>{{ answer_set.paginator.count }}개의 답변이 있습니다.</h5>
+        </div>
+        <div class="col-2">
+            <select class="form-control so">
+                <option value="recommend" {% if so == 'recommend' %}selected{% endif %}>추천순</option>
+                <option value="recent" {% if so == 'recent' %}selected{% endif %}>최신순</option>
+            </select>
+        </div>
+    </div>
+    {% for answer in answer_set %}
     <div class="row my-3">
         <div class="col-1">
             <div class="bg-light text-center p-3 border font-weight-bolder mb-1">
@@ -111,7 +121,7 @@
         </div>
     </div>
     {% endfor %}
-        <!-- 페이징처리 시작 -->
+    <!-- 페이징처리 시작 -->
     <ul class="pagination justify-content-center">
         <!-- 처음페이지 -->
         <li class="page-item">
@@ -179,7 +189,7 @@
 {% endblock %}
 {% block script %}
 <script type='text/javascript'>
-    $(document).ready(function(){
+     $(document).ready(function(){
         $(".delete").on('click', function() {
             if(confirm("정말 삭제하시겠습니까?")) {
                 location.href = $(this).data('uri');
