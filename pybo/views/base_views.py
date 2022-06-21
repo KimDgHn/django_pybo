@@ -3,7 +3,7 @@ from django.db.models import Q, Count
 from django.shortcuts import render, get_object_or_404
 # 이벤트에 필요한 메소드 호출
 from common.views import get_client_ip
-from ..models import Question ,Answer
+from ..models import Question, Answer
 
 
 def index(request):
@@ -40,10 +40,11 @@ def index(request):
     return render(request, 'pybo/question_list.html', context)
 
 
-def detail(request, question_id):
+def detail(request, question_id, question=None):
     """
     pybo 내용 출력
     """
+    # 조회수
     page = request.GET.get('page', '1')  # 페이지
     so = request.GET.get('so', 'recommend')  # 정렬기준
     question = get_object_or_404(Question, pk=question_id)
